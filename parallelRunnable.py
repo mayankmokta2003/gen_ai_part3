@@ -14,7 +14,7 @@ detailed_prompt = ChatPromptTemplate.from_template(
 )
 
 short_prompt = ChatPromptTemplate.from_template(
-    "Explain {topic2} in 1-2 lines"
+    "Explain {topic} in 1-2 lines"
 )
 
 query = "machine learning"
@@ -44,6 +44,6 @@ chain = RunnableParallel({
     "short_response": short_prompt | model | parser,
 })
 
-final_response = chain.invoke({"topic": query, "topic2": "deep learning"})
+final_response = chain.invoke({"topic": query})
 print(final_response["detailed_response"])
 print(final_response["short_response"])
